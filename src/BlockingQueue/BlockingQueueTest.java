@@ -16,6 +16,7 @@ public class BlockingQueueTest {
         Producer producer3 = new Producer("producer3",queue);
         Consumer consumer1 = new Consumer("consumer1",queue);
         Consumer consumer2 = new Consumer("consumer2",queue);
+        Consumer consumer3 = new Consumer("consumer3",queue);
  
         // ½èÖúExecutors
         ExecutorService service = Executors.newCachedThreadPool();
@@ -25,12 +26,13 @@ public class BlockingQueueTest {
         service.execute(producer3);
         service.execute(consumer1);
         service.execute(consumer2);
+        service.execute(consumer3);
  
         // Ö´ÐÐ10s
         Thread.sleep(10 * 1000);
-//        producer1.stop();
-//        producer2.stop();
-//        producer3.stop();
+        producer1.stop();
+        producer2.stop();
+        producer3.stop();
  
         Thread.sleep(2000);
         // ÍË³öExecutor
